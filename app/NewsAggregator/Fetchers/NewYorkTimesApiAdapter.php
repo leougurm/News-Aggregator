@@ -78,7 +78,7 @@ class NewYorkTimesApiAdapter implements ArticleApiInterface
             'description' => Arr::get($result, 'abstract'),
             'external_id' => $result['uri'],
             'title' => Arr::get($result, 'title'),
-            'slug' => Str::slug(Arr::get($result, 'headline.main')),
+            'slug' => Str::slug(Arr::get($result, 'title')),
             'url' => Arr::get($result, 'published_date'),
             'content' => Arr::get($result, 'lead_paragraph')
                 ?? Arr::get($result, 'abstract'),
