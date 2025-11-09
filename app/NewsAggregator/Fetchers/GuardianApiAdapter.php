@@ -89,8 +89,8 @@ class GuardianApiAdapter implements ArticleApiInterface
             'slug' => Str::slug($result['webTitle'] ?? 'untitled-' . uniqid()),
             'url' => $result['webUrl'] ?? null,
             'content' => isset($result['fields']['body'])
-                ? Str::limit($result['fields']['body'], 500)
-                : null,,
+                ? Str::limit($result['fields']['body'], 65535)
+                : null,
             'image_url' => $result['fields']['thumbnail'] ?? null,
             'author' => $result['fields']['byline'] ?? null,
             'article_source' => $result['fields']['byline'] ?? 'Unknown',
