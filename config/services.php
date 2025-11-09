@@ -35,4 +35,22 @@ return [
         ],
     ],
 
+
+    'news' => [
+        'guardian' => [
+            'url' => env('GUARDIAN_URL'),
+            'rate_limit' => 100,
+            'secret' => env('GUARDIAN_SECRET')
+        ],
+        'news_api' => [
+            'url' => env('NEWS_API_URL'),
+            'rate_limit' => 100,
+            'secret' => env('NEWS_API_SECRET')
+        ],
+        'ny_times' => [
+            'url' => env('NY_TIMES_URL'),
+            'rate_limit' => 100,
+            'secret' => env('NY_TIMES_SECRET')
+        ],
+    ],
 ];
