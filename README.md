@@ -1,0 +1,52 @@
+## News Api
+
+This is an api platform which serves articles from 3 different sources.
+
+It fetches articles periodically from the sources and give results according to saved user preferences or search queries or filtering. 
+
+
+## Tools 
+
+- PHP
+- Docker
+- Laravel
+- Horizon
+- Redis
+- Posgtresql
+
+## Deploying the app
+
+You only have to run 
+
+``
+docker compose up
+``
+
+If you do not want to wait for the jobs to run you can run. Jobs run every 15 minutes 
+
+``
+docker exec news-app php artisan startup-fetch:news
+``
+
+After running the project, you can check swagger.
+
+http://localhost:8001/api/documentation
+
+## What does app do from technical perspective
+
+- App owner can turn on or off fetching for a specific source from db
+- For every source app gathers their own categories and its jobs runs everyday.
+- For every  category app gathers articles from their sources and saves into db with their vectors so that searching would be easier
+- Users can login and update their preferences
+- If rate limits are reached for the sources fallback api keys are being used
+
+## What could be done more
+
+- Redis can be used for categories or latest articles
+- Categories can be mapped for a global section hierarchy in our own app
+- Api rate limits are pretty low for some sources. It must be taken into consideration.
+- Every category can run in its own job it will be faster and more error prone but rate limits must be taken into consideration
+
+
+
+
