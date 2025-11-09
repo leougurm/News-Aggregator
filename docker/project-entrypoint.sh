@@ -2,6 +2,7 @@
 
 # Exit on error
 #set -e
+composer install
 
 echo "Running database migrations..."
 php artisan migrate --force
