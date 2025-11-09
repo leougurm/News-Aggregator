@@ -11,7 +11,7 @@ It fetches articles periodically from the sources and give results according to 
 - Docker
 - Laravel
 - Horizon
-- Redis
+- Redis (for cache and horizon)
 - Posgtresql
 
 ## Deploying the app
@@ -31,6 +31,10 @@ docker exec news-app php artisan startup-fetch:news
 After running the project, you can check swagger.
 
 http://localhost:8001/api/documentation
+
+If there are articles fetched you can try a query like this
+
+http://localhost:8001/api/v1/articles/search?q=tesla&category=business
 
 ## What does app do from technical perspective
 
