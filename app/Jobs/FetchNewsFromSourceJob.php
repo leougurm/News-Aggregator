@@ -40,4 +40,9 @@ class FetchNewsFromSourceJob implements ShouldQueue
         Log::info("Job started for $this->source");
         $service->aggregateFromSource($this->source);
     }
+
+    public function failed(\Throwable $exception)
+    {
+        Log::error("Job permanently failed after attempts");
+    }
 }
