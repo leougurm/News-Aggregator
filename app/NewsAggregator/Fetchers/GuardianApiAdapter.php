@@ -65,6 +65,7 @@ class GuardianApiAdapter implements ArticleApiInterface
 
             return [];
         }
+        return [];
     }
 
     public function mapData(int $serviceId, array $result): array
