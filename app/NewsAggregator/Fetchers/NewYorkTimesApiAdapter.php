@@ -45,6 +45,7 @@ class NewYorkTimesApiAdapter implements ArticleApiInterface
                 return [];
             }
             if ($e->getCode() !== 429) {
+                sleep(5);
                 Log::info("Http request will run again for $service->name: $section");
                 return $this->fetchData($service, $section, true);
             }
