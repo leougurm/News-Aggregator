@@ -19,20 +19,6 @@ services:
         networks:
             - news-app-network
 
-    news-horizon:
-      build: .
-      command: php artisan horizon
-      volumes:
-        - .:/var/www
-      environment:
-        - DB_HOST=news-db
-        - REDIS_HOST=news-redis
-      depends_on:
-        - news-redis
-      restart: unless-stopped
-      networks:
-        - news-app-network
-
     news-webserver:
         image: nginx:alpine
         container_name: news-webserver
@@ -106,11 +92,35 @@ services:
         - ./:/var/www
       networks:
         - news-app-network
+      healthcheck:
+        test: [ "CMD", "php", "artisan", "schedule:list" ]
+        interval: 5s
+        timeout: 5s
+        retries: 10
+        start_period: 30s
       depends_on:
         news-redis:
           condition: service_started
         news-db:
           condition: service_healthy
+
+    news-horizon:
+      build: .
+      command: php artisan horizon
+      volumes:
+        - .:/var/www
+      environment:
+        - DB_HOST=news-db
+        - REDIS_HOST=news-redis
+      depends_on:
+        news-scheduler:
+          condition: service_healthy
+        news-redis:
+          condition: service_started
+      restart: unless-stopped
+      networks:
+        - news-app-network
+
 
 networks:
     news-app-network:
