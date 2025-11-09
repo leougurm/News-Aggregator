@@ -19,7 +19,7 @@ It fetches articles periodically from the sources and give results according to 
 You only have to run 
 
 ``
-docker compose up
+docker compose up --build
 ``
 
 If you do not want to wait for the jobs to run you can run. Jobs run every 15 minutes 
@@ -39,6 +39,7 @@ http://localhost:8001/api/documentation
 - For every  category app gathers articles from their sources and saves into db with their vectors so that searching would be easier
 - Users can login and update their preferences
 - If rate limits are reached for the sources fallback api keys are being used
+- I put env file for test purposes.
 
 ## What could be done more
 

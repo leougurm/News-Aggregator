@@ -15,7 +15,7 @@ class GuardianApiAdapter implements ArticleApiInterface
     {
     }
 
-    public function fetchData(ArticleSource $service, string $section, array $query = [],bool $retry = false): array
+    public function fetchData(ArticleSource $service, string $section, bool $retry = false): array
     {
         try {
             $response = $this->rest->fetchData(
