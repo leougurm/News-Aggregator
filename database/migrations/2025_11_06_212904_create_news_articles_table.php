@@ -28,7 +28,6 @@ return new class extends Migration {
             $table->jsonb('keywords')->nullable();
 
             $table->timestamp('published_at');
-            $table->timestamp('fetched_at')->useCurrent();
 
             $table->jsonb('raw_data')->nullable();
             $table->jsonb('metadata')->nullable();

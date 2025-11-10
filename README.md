@@ -4,6 +4,7 @@ This is an api platform which serves articles from 3 different sources.
 
 It fetches articles periodically from the sources and give results according to saved user preferences or search queries or filtering. 
 
+On project startup every category from the sources are fetched and every 15 min news are retrieved from the sources with specific categories. They are saved into postgresql with vectors for better and faster search results.
 
 ## Tools 
 
@@ -12,7 +13,7 @@ It fetches articles periodically from the sources and give results according to 
 - Laravel
 - Horizon
 - Redis (for cache and horizon)
-- Posgtresql
+- Posgtresql 
 
 ## Deploying the app
 
@@ -51,7 +52,7 @@ http://localhost:8001/api/v1/articles/search?q=tesla&category=business
 - Categories can be mapped for a global section hierarchy in our own app
 - Api rate limits are pretty low for some sources. It must be taken into consideration.
 - Every category can run in its own job it will be faster and more error prone but rate limits must be taken into consideration
-
+- For semantic search embeddings can be introduced to postgresql. If the db gets bigger elastic search can be an option.
 
 
 
