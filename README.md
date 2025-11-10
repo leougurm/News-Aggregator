@@ -48,6 +48,7 @@ http://localhost:8001/api/v1/articles/search?q=tesla&category=business
 
 ## What could be done more
 
+- Tests can be written.
 - Redis can be used for categories or latest articles
 - Categories can be mapped for a global section hierarchy in our own app
 - Api rate limits are pretty low for some sources. It must be taken into consideration.
